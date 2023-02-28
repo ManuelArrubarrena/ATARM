@@ -1,0 +1,184 @@
+Sub ReportesGoku()
+
+Application.ScreenUpdating = False
+Application.DisplayAlerts = False
+
+    Dim C As Long
+    Dim x As Integer
+    Dim i As Integer
+    Dim Div(6) As String
+        Div(1) = "audcad&"
+        Div(2) = "audjpy&"
+        Div(3) = "cadjpy&"
+        Div(4) = "euraud&"
+        Div(5) = "eurcad&"
+        Div(6) = "gbpaud&"
+    Dim Divis(6) As String
+        Divis(1) = "AudCad"
+        Divis(2) = "AudJpy"
+        Divis(3) = "CadJpy"
+        Divis(4) = "EurAud"
+        Divis(5) = "EurCad"
+        Divis(6) = "GbpAud"
+    
+    'Puto Hashtag
+    C = Cells(5, 1).End(xlDown).Row
+    For Z = 6 To C
+        Xn = Cells(Z, 1).Value
+        Cells(Z, 1).Value = "#" & Xn
+    Next Z
+    Columns("G:M").Select
+    Selection.Delete Shift:=xlToLeft
+    Range("G6", Range("G6").End(xlDown)).Select
+    Selection.FormatConditions.Add Type:=xlCellValue, Operator:=xlGreater, _
+        Formula1:="=0"
+    Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Selection.FormatConditions(1).Font
+        .Color = -16752384
+        .TintAndShade = 0
+    End With
+    With Selection.FormatConditions(1).Interior
+        .PatternColorIndex = xlAutomatic
+        .Color = 13561798
+        .TintAndShade = 0
+    End With
+    Selection.FormatConditions(1).StopIfTrue = False
+    Selection.FormatConditions.Add Type:=xlCellValue, Operator:=xlLess, _
+        Formula1:="=0"
+    Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
+    With Selection.FormatConditions(1).Font
+        .Color = -16383844
+        .TintAndShade = 0
+    End With
+    With Selection.FormatConditions(1).Interior
+        .PatternColorIndex = xlAutomatic
+        .Color = 13551615
+        .TintAndShade = 0
+    End With
+    Selection.FormatConditions(1).StopIfTrue = False
+    
+'   1 HORA TODOS
+    For i = 1 To 6
+        Sheets(1).Select
+        ActiveSheet.Range("$A$5", Range("G5").End(xlDown)).AutoFilter Field:=5, Criteria1:=Div(i)
+        '1H Goku 1v
+        ActiveSheet.Range("$A$5", Range("G5").End(xlDown)).AutoFilter Field:=4, Criteria1:="0.10"
+        If Range("E5").End(xlDown).Value = Div(i) Then
+            Range("A5").Select
+            Range(Selection, Selection.End(xlToRight)).Select
+            Range(Selection, Selection.End(xlDown)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("B3").Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Range("B4").Select
+            If Selection.Offset(1, 0).Value <> "" Then
+                Range(Selection, Selection.End(xlToRight)).Select
+                Range(Selection, Selection.End(xlDown)).Select
+            Else
+                Range(Selection, Selection.End(xlToRight)).Select
+            End If
+            Selection.Copy
+            Sheets(Divis(i)).Select
+            Range("B2").Select
+            Selection.End(xlDown).Offset(1, 0).Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Sheets(1).Select
+            ActiveSheet.Next.Select
+            ActiveWindow.SelectedSheets.Delete
+        End If
+        '1H GokuNivel
+        Sheets(1).Select
+        ActiveSheet.Range("$A$5", Range("G5").End(xlDown)).AutoFilter Field:=4, Criteria1:="0.20"
+        If Range("E5").End(xlDown).Value = Div(i) Then
+            Range("A5").Select
+            Range(Selection, Selection.End(xlToRight)).Select
+            Range(Selection, Selection.End(xlDown)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("B3").Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Range("B4").Select
+            If Selection.Offset(1, 0).Value <> "" Then
+                Range(Selection, Selection.End(xlToRight)).Select
+                Range(Selection, Selection.End(xlDown)).Select
+            Else
+                Range(Selection, Selection.End(xlToRight)).Select
+            End If
+            Selection.Copy
+            Sheets(Divis(i)).Select
+            Range("AA2").Select
+            Selection.End(xlDown).Offset(1, 0).Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Sheets(1).Select
+            ActiveSheet.Next.Select
+            ActiveWindow.SelectedSheets.Delete
+        End If
+        '1H NivelVenta
+        Sheets(1).Select
+        ActiveSheet.Range("$A$5", Range("G5").End(xlDown)).AutoFilter Field:=4, Criteria1:="0.30"
+        If Range("E5").End(xlDown).Value = Div(i) Then
+            Range("A5").Select
+            Range(Selection, Selection.End(xlToRight)).Select
+            Range(Selection, Selection.End(xlDown)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("B3").Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Range("B4").Select
+            If Selection.Offset(1, 0).Value <> "" Then
+                Range(Selection, Selection.End(xlToRight)).Select
+                Range(Selection, Selection.End(xlDown)).Select
+            Else
+                Range(Selection, Selection.End(xlToRight)).Select
+            End If
+            Selection.Copy
+            Sheets(Divis(i)).Select
+            Range("AZ2").Select
+            Selection.End(xlDown).Offset(1, 0).Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Sheets(1).Select
+            ActiveSheet.Next.Select
+            ActiveWindow.SelectedSheets.Delete
+        End If
+        '1H Cubist+Goku
+        Sheets(1).Select
+        ActiveSheet.Range("$A$5", Range("G5").End(xlDown)).AutoFilter Field:=4, Criteria1:="0.40"
+        If Range("E5").End(xlDown).Value = Div(i) Then
+            Range("A5").Select
+            Range(Selection, Selection.End(xlToRight)).Select
+            Range(Selection, Selection.End(xlDown)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("B3").Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Range("B4").Select
+            If Selection.Offset(1, 0).Value <> "" Then
+                Range(Selection, Selection.End(xlToRight)).Select
+                Range(Selection, Selection.End(xlDown)).Select
+            Else
+                Range(Selection, Selection.End(xlToRight)).Select
+            End If
+            Selection.Copy
+            Sheets(Divis(i)).Select
+            Range("BY2").Select
+            Selection.End(xlDown).Offset(1, 0).Select
+            ActiveSheet.Paste
+            Application.CutCopyMode = False
+            Sheets(1).Select
+            ActiveSheet.Next.Select
+            ActiveWindow.SelectedSheets.Delete
+        End If
+    Next i
+    
+Application.ScreenUpdating = True
+Application.DisplayAlerts = True
+End Sub
+
