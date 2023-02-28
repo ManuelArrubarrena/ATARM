@@ -1,0 +1,360 @@
+Sub GokuTo2()
+Application.ScreenUpdating = False
+Application.DisplayAlerts = False
+
+    Dim n As Long
+    Dim Nn As Long
+    Dim Npiz As Long
+    Dim Pxiz As Long
+    Dim x As Integer
+          
+'1 HORA TODOS
+    Dim noMbreim As String
+    Dim xJmi As Integer
+    
+    Sheets("AudCad").Select
+    For xJmi = 1 To 6
+        If ActiveSheet.Name = "AudCad" Or ActiveSheet.Name = "AudJpy" Or ActiveSheet.Name = "CadJpy" Or ActiveSheet.Name = "EurAud" _
+        Or ActiveSheet.Name = "EurCad" Or ActiveSheet.Name = "GbpAud" Then
+           
+            noMbreim = ActiveSheet.Name
+            ActiveSheet.Select
+            'MomenGoku
+            n = Cells(2, 2).End(xlDown).Row
+            Nn = (Cells(3, 12).End(xlDown).Row) - 1
+            Range(Cells(2, 12), Cells(n, 12)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("A1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 14), Cells(n, 14)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("B1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            
+            ActiveSheet.Previous.Select
+            Range("Y2").Select
+            ActiveCell.FormulaR1C1 = "TARGET"
+            Range("Y3").Select
+            ActiveCell.FormulaR1C1 = "=+IF(RC[-17]>0,1,0)"
+            Range("Y3").Select
+            Selection.AutoFill Destination:=Range(Cells(3, 25), Cells(n - 1, 25))
+            Range(Cells(2, 25), Cells(n, 25)).Select
+            Selection.Copy
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Application.CutCopyMode = False
+        
+            Range(Cells(2, 25), Cells(n, 25)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("D1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            ActiveSheet.Previous.Select
+            Range("Z2").Select
+            ActiveCell.FormulaR1C1 = "Predi&price"
+            Range("Z3").Select
+            Application.CutCopyMode = False
+            ActiveCell.FormulaR1C1 = "=+RC[-15]-RC[-13]"
+            Range("Z3").Select
+            Selection.AutoFill Destination:=Range(Cells(3, 26), Cells(n - 1, 26))
+            Range(Cells(2, 26), Cells(n, 26)).Select
+            Selection.Copy
+             Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Application.CutCopyMode = False
+        
+            Range(Cells(2, 26), Cells(n, 26)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("C1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            
+            Range(Cells(n - 1, 1), Cells(n - 1, 5)).Select
+            Selection.Clear
+            Npiz = Cells(2, 2).End(xlDown).Row
+            If ActiveSheet.Previous.Name = "AudJpy" Then Npiz = 100
+            If Npiz > 1500 Then
+                Pxiz = Npiz - 1500
+                Range(Cells(2, 1), Cells(Pxiz, 6)).Select
+                Application.CutCopyMode = False
+                Selection.Delete Shift:=xlUp
+            End If
+            ActiveSheet.Move
+            ActiveWorkbook.SaveAs Filename:="C:\Users\Admin\Desktop\" & noMbreim & "\" & noMbreim & "&Momen" & "1.csv", _
+            FileFormat:=xlCSV, CreateBackup:=False
+            ActiveWindow.Close
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 25), Cells(n, 26)).Select
+            Selection.Clear
+            
+            'MomNivelVenta
+            n = Cells(2, 52).End(xlDown).Row
+            Nn = (Cells(3, 62).End(xlDown).Row) - 1
+            Range(Cells(2, 62), Cells(n, 62)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("A1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 64), Cells(n, 64)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("B1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            
+            ActiveSheet.Previous.Select
+            Range("BW2").Select
+            ActiveCell.FormulaR1C1 = "TARGET"
+            Range("BW3").Select
+            ActiveCell.FormulaR1C1 = "=+IF(RC[-17]>0,1,0)"
+            Range("BW3").Select
+            Selection.AutoFill Destination:=Range(Cells(3, 75), Cells(n - 1, 75))
+            Range(Cells(2, 75), Cells(n, 75)).Select
+            Selection.Copy
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Application.CutCopyMode = False
+        
+            Range(Cells(2, 75), Cells(n, 75)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("D1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            ActiveSheet.Previous.Select
+            Range("BX2").Select
+            ActiveCell.FormulaR1C1 = "Predi&price"
+            Range("BX3").Select
+            Application.CutCopyMode = False
+            ActiveCell.FormulaR1C1 = "=+RC[-15]-RC[-13]"
+            Range("BX3").Select
+            Selection.AutoFill Destination:=Range(Cells(3, 76), Cells(n - 1, 76))
+            Range(Cells(2, 76), Cells(n, 76)).Select
+            Selection.Copy
+             Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Application.CutCopyMode = False
+        
+            Range(Cells(2, 76), Cells(n, 76)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("C1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 74), Cells(n, 74)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("E1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 68), Cells(n, 69)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("F1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                              
+            Range(Cells(n - 1, 1), Cells(n - 1, 5)).Select
+            Selection.Clear
+            
+            ActiveSheet.Range("$A$1", Range("$G$1").End(xlDown)).AutoFilter Field:=5, Criteria1:="<>"
+            Range(Cells(1, 1), Cells(n, 7)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("A1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            ActiveSheet.Previous.Select
+            ActiveWindow.SelectedSheets.Delete
+            
+'            On Error Resume Next
+'            Range(Cells(2, 5), Cells(n, 5)).Select
+'            Selection.SpecialCells(xlCellTypeBlanks).EntireRow.Delete
+'
+            Range(Cells(n - 1, 1), Cells(n - 1, 5)).Select
+            Selection.Clear
+            Npiz = Cells(2, 2).End(xlDown).Row
+            If Npiz > 1500 Then
+                Pxiz = Npiz - 1500
+                Range(Cells(2, 1), Cells(Pxiz, 7)).Select
+                Application.CutCopyMode = False
+                Selection.Delete Shift:=xlUp
+            End If
+            ActiveSheet.Move
+            ActiveWorkbook.SaveAs Filename:="C:\Users\Admin\Desktop\" & noMbreim & "\" & noMbreim & "&MomNivVe" & "1.csv", _
+            FileFormat:=xlCSV, CreateBackup:=False
+            ActiveWindow.Close
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 75), Cells(n, 76)).Select
+            Selection.Clear
+            
+            'MomCubist+Goku
+            n = Cells(2, 77).End(xlDown).Row
+            Nn = (Cells(3, 87).End(xlDown).Row) - 1
+            Range(Cells(2, 87), Cells(n, 87)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("A1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 89), Cells(n, 89)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("B1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            
+            ActiveSheet.Previous.Select
+            Range("CV2").Select
+            ActiveCell.FormulaR1C1 = "TARGET"
+            Range("CV3").Select
+            ActiveCell.FormulaR1C1 = "=+IF(RC[-17]>0,1,0)"
+            Range("CV3").Select
+            Selection.AutoFill Destination:=Range(Cells(3, 100), Cells(n - 1, 100))
+            Range(Cells(2, 100), Cells(n, 100)).Select
+            Selection.Copy
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Application.CutCopyMode = False
+        
+            Range(Cells(2, 100), Cells(n, 100)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("D1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            ActiveSheet.Previous.Select
+            Range("CW2").Select
+            ActiveCell.FormulaR1C1 = "Predi&price"
+            Range("CW3").Select
+            Application.CutCopyMode = False
+            ActiveCell.FormulaR1C1 = "=+RC[-15]-RC[-13]"
+            Range("CW3").Select
+            Selection.AutoFill Destination:=Range(Cells(3, 101), Cells(n - 1, 101))
+            Range(Cells(2, 101), Cells(n, 101)).Select
+            Selection.Copy
+             Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                :=False, Transpose:=False
+            Application.CutCopyMode = False
+        
+            Range(Cells(2, 101), Cells(n, 101)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("C1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 99), Cells(n, 99)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("E1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 93), Cells(n, 94)).Select
+            Selection.Copy
+            ActiveSheet.Next.Select
+            Range("F1").Select
+            Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                    
+            Range(Cells(n - 1, 1), Cells(n - 1, 5)).Select
+            Selection.Clear
+            
+            ActiveSheet.Range("$A$1", Range("$G$1").End(xlDown)).AutoFilter Field:=5, Criteria1:="<>"
+            Range(Cells(1, 1), Cells(n, 7)).Select
+            Selection.Copy
+            Sheets.Add After:=ActiveSheet
+            Range("A1").Select
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+                Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+                    :=False, Transpose:=False
+            ActiveSheet.Previous.Select
+            ActiveWindow.SelectedSheets.Delete
+            
+'            On Error Resume Next
+'            Range(Cells(2, 5), Cells(n, 5)).Select
+'            Selection.SpecialCells(xlCellTypeBlanks).EntireRow.Delete
+            
+            Range(Cells(n - 1, 1), Cells(n - 1, 5)).Select
+            Selection.Clear
+            Npiz = Cells(2, 2).End(xlDown).Row
+            If Npiz > 1500 Then
+                Pxiz = Npiz - 1500
+                Range(Cells(2, 1), Cells(Pxiz, 7)).Select
+                Application.CutCopyMode = False
+                Selection.Delete Shift:=xlUp
+            End If
+            ActiveSheet.Move
+            ActiveWorkbook.SaveAs Filename:="C:\Users\Admin\Desktop\" & noMbreim & "\" & noMbreim & "&MomCubGok" & "1.csv", _
+            FileFormat:=xlCSV, CreateBackup:=False
+            ActiveWindow.Close
+            ActiveSheet.Previous.Select
+            Range(Cells(2, 100), Cells(n, 101)).Select
+            Selection.Clear
+            
+        End If
+        ActiveSheet.Next.Select
+    Next xJmi
+    'FALTA MomGokuNivel
+Application.DisplayAlerts = True
+Application.ScreenUpdating = True
+End Sub
+

@@ -1,0 +1,227 @@
+Sub LogsGoku()
+
+    Dim n As Long
+    Dim x As Integer
+    Dim i As Integer
+    Dim g As Integer
+    Dim D As Long
+    Dim E As Long
+    Dim j As Long
+    Dim O As Long
+    
+    n = Cells(1, 1).End(xlDown).Row
+' 1 HORA
+    Dim Div(6) As String
+        Div(1) = "AUDCAD&"
+        Div(2) = "AUDJPY&"
+        Div(3) = "CADJPY&"
+        Div(4) = "EURAUD&"
+        Div(5) = "EURCAD&"
+        Div(6) = "GBPAUD&"
+    Dim Divis(6) As String
+        Divis(1) = "AudCad"
+        Divis(2) = "AudJpy"
+        Divis(3) = "CadJpy"
+        Divis(4) = "EurAud"
+        Divis(5) = "EurCad"
+        Divis(6) = "GbpAud"
+        
+    For g = 1 To 6
+        '1H Goku1v
+        j = Sheets(Divis(g)).Cells(2, 9).End(xlDown).Row + 1
+        O = Sheets(Divis(g)).Cells(2, 2).End(xlDown).Row
+        If (O - j >= 0) Then
+            For i = j To O
+                For x = 1 To n
+                    If Sheets(Divis(g)).Cells(i, 9).Value <> 0 Then Exit For
+                    If Cells(x, 4).Value = Div(g) And Cells(x, 5).Value = "H1:" And Cells(x, 6).Value = "open" And Cells(x, 7).Value = Sheets(Divis(g)).Cells(i, 2).Value _
+                    And Cells(x + 1, 7).Value = "Goku1" Then
+                        With Sheets(Divis(g))
+                            'MM
+                            .Cells(i, 9).Value = Cells(x + 2, 7).Value
+                            'DifMM
+                            .Cells(i, 10).Value = Cells(x + 2, 9).Value
+                            'Predi
+                            .Cells(i, 11).Value = Cells(x + 2, 11).Value
+                            'DifPredi
+                            .Cells(i, 12).Value = Cells(x + 2, 13).Value
+                            'PrediPrice
+                            .Cells(i, 13).Value = Cells(x + 2, 15).Value
+                            'DifPredPri
+                            .Cells(i, 14).Value = Cells(x + 2, 17).Value
+                            'Volumen1
+                            .Cells(i, 15).Value = Cells(x + 3, 21).Value
+                            'Pend5
+                            .Cells(i, 16).Value = Cells(x + 3, 7).Value
+                            'Pend10
+                            .Cells(i, 17).Value = Cells(x + 3, 9).Value
+                            'PorFiboStd
+                            .Cells(i, 18).Value = Cells(x + 3, 11).Value
+                            'DifMax
+                            .Cells(i, 19).Value = Cells(x + 3, 13).Value
+                            'DifMin
+                            .Cells(i, 20).Value = Cells(x + 3, 15).Value
+                            'DifMax2
+                            .Cells(i, 21).Value = Cells(x + 3, 17).Value
+                            'DifMin2
+                            .Cells(i, 22).Value = Cells(x + 3, 19).Value
+                            'Bid
+                            .Cells(i, 23).Value = Cells(x + 4, 13).Value
+                            'MMopen
+                            .Cells(i, 24).Value = Cells(x + 4, 11).Value
+                        End With
+                    Else
+                    End If
+                Next x
+            Next i
+        Else
+        End If
+        '1H GokuNivel
+        j = Sheets(Divis(g)).Cells(2, 34).End(xlDown).Row + 1
+        O = Sheets(Divis(g)).Cells(2, 27).End(xlDown).Row
+        If (O - j >= 0) Then
+            For i = j To O
+                For x = 1 To n
+                    If Sheets(Divis(g)).Cells(i, 34).Value <> 0 Then Exit For
+                    If Cells(x, 4).Value = Div(g) And Cells(x, 5).Value = "H1:" And Cells(x, 6).Value = "open" And Cells(x, 7).Value = Sheets(Divis(g)).Cells(i, 27).Value _
+                    And Cells(x + 1, 7).Value = "GokuNivel" Then
+                        With Sheets(Divis(g))
+                            'MM
+                            .Cells(i, 34).Value = Cells(x + 2, 7).Value
+                            'DifMM
+                            .Cells(i, 35).Value = Cells(x + 2, 9).Value
+                            'Predi
+                            .Cells(i, 36).Value = Cells(x + 2, 11).Value
+                            'DifPredi
+                            .Cells(i, 37).Value = Cells(x + 2, 13).Value
+                            'PrediPrice
+                            .Cells(i, 38).Value = Cells(x + 2, 15).Value
+                            'DifPredPri
+                            .Cells(i, 39).Value = Cells(x + 2, 17).Value
+                            'Volumen1
+                            .Cells(i, 40).Value = Cells(x + 3, 21).Value
+                            'Pend5
+                            .Cells(i, 41).Value = Cells(x + 3, 7).Value
+                            'Pend10
+                            .Cells(i, 42).Value = Cells(x + 3, 9).Value
+                            'PorFiboStd
+                            .Cells(i, 43).Value = Cells(x + 3, 11).Value
+                            'DifMax
+                            .Cells(i, 44).Value = Cells(x + 3, 13).Value
+                            'DifMin
+                            .Cells(i, 45).Value = Cells(x + 3, 15).Value
+                            'DifMax2
+                            .Cells(i, 46).Value = Cells(x + 3, 17).Value
+                            'DifMin2
+                            .Cells(i, 47).Value = Cells(x + 3, 19).Value
+                            'Bid
+                            .Cells(i, 48).Value = Cells(x + 4, 13).Value
+                            'MMopen
+                            .Cells(i, 49).Value = Cells(x + 4, 11).Value
+                        End With
+                    Else
+                    End If
+                Next x
+            Next i
+        Else
+        End If
+        '1H NivelVenta
+        j = Sheets(Divis(g)).Cells(2, 59).End(xlDown).Row + 1
+        O = Sheets(Divis(g)).Cells(2, 52).End(xlDown).Row
+        If (O - j >= 0) Then
+            For i = j To O
+                For x = 1 To n
+                    If Sheets(Divis(g)).Cells(i, 59).Value <> 0 Then Exit For
+                    If Cells(x, 4).Value = Div(g) And Cells(x, 5).Value = "H1:" And Cells(x, 6).Value = "open" And Cells(x, 7).Value = Sheets(Divis(g)).Cells(i, 52).Value _
+                    And Cells(x + 1, 7).Value = "NivelVenta" Then
+                        With Sheets(Divis(g))
+                            'MM
+                            .Cells(i, 59).Value = Cells(x + 2, 7).Value
+                            'DifMM
+                            .Cells(i, 60).Value = Cells(x + 2, 9).Value
+                            'Predi
+                            .Cells(i, 61).Value = Cells(x + 2, 11).Value
+                            'DifPredi
+                            .Cells(i, 62).Value = Cells(x + 2, 13).Value
+                            'PrediPrice
+                            .Cells(i, 63).Value = Cells(x + 2, 15).Value
+                            'DifPredPri
+                            .Cells(i, 64).Value = Cells(x + 2, 17).Value
+                            'Volumen1
+                            .Cells(i, 65).Value = Cells(x + 3, 21).Value
+                            'Pend5
+                            .Cells(i, 66).Value = Cells(x + 3, 7).Value
+                            'Pend10
+                            .Cells(i, 67).Value = Cells(x + 3, 9).Value
+                            'PorFiboStd
+                            .Cells(i, 68).Value = Cells(x + 3, 11).Value
+                            'DifMax
+                            .Cells(i, 69).Value = Cells(x + 3, 13).Value
+                            'DifMin
+                            .Cells(i, 70).Value = Cells(x + 3, 15).Value
+                            'DifMax2
+                            .Cells(i, 71).Value = Cells(x + 3, 17).Value
+                            'DifMin2
+                            .Cells(i, 72).Value = Cells(x + 3, 19).Value
+                            'Bid
+                            .Cells(i, 73).Value = Cells(x + 4, 13).Value
+                            'MMopen
+                            .Cells(i, 74).Value = Cells(x + 4, 11).Value
+                        End With
+                    Else
+                    End If
+                Next x
+            Next i
+        Else
+        End If
+        '1H Cubist+Goku
+        j = Sheets(Divis(g)).Cells(2, 84).End(xlDown).Row + 1
+        O = Sheets(Divis(g)).Cells(2, 77).End(xlDown).Row
+        If (O - j >= 0) Then
+            For i = j To O
+                For x = 1 To n
+                    If Sheets(Divis(g)).Cells(i, 84).Value <> 0 Then Exit For
+                    If Cells(x, 4).Value = Div(g) And Cells(x, 5).Value = "H1:" And Cells(x, 6).Value = "open" And Cells(x, 7).Value = Sheets(Divis(g)).Cells(i, 77).Value _
+                    And Cells(x + 1, 7).Value = "Cubist+Goku" Then
+                        With Sheets(Divis(g))
+                            'MM
+                            .Cells(i, 84).Value = Cells(x + 2, 7).Value
+                            'DifMM
+                            .Cells(i, 85).Value = Cells(x + 2, 9).Value
+                            'Predi
+                            .Cells(i, 86).Value = Cells(x + 2, 11).Value
+                            'DifPredi
+                            .Cells(i, 87).Value = Cells(x + 2, 13).Value
+                            'PrediPrice
+                            .Cells(i, 88).Value = Cells(x + 2, 15).Value
+                            'DifPredPri
+                            .Cells(i, 89).Value = Cells(x + 2, 17).Value
+                            'Volumen1
+                            .Cells(i, 90).Value = Cells(x + 3, 21).Value
+                            'Pend5
+                            .Cells(i, 91).Value = Cells(x + 3, 7).Value
+                            'Pend10
+                            .Cells(i, 92).Value = Cells(x + 3, 9).Value
+                            'PorFiboStd
+                            .Cells(i, 93).Value = Cells(x + 3, 11).Value
+                            'DifMax
+                            .Cells(i, 94).Value = Cells(x + 3, 13).Value
+                            'DifMin
+                            .Cells(i, 95).Value = Cells(x + 3, 15).Value
+                            'DifMax2
+                            .Cells(i, 96).Value = Cells(x + 3, 17).Value
+                            'DifMin2
+                            .Cells(i, 97).Value = Cells(x + 3, 19).Value
+                            'Bid
+                            .Cells(i, 98).Value = Cells(x + 4, 13).Value
+                            'MMopen
+                            .Cells(i, 99).Value = Cells(x + 4, 11).Value
+                        End With
+                    Else
+                    End If
+                Next x
+            Next i
+        Else
+        End If
+    Next g
+End Sub
